@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reels</title>
+    <link rel="stylesheet" href="real.css">
+</head>
+<body>
+
+    <div class="reels-container">
+        <div class="reel">
+            <video class="reel-video" controls src="videos/Download (21).mp4" ></video>
+            <div class="overlay">Username - Description</div>
+            <div class="controls">
+                <button>❤</button>
+                <button>💬</button>
+                <button>🔗</button>
+            </div>
+
+        </div>
+
+        <div class="reel">
+            <video class="reel-video" autoplay src="videos/Download (14).mp4" ></video>
+            <div class="overlay">Username - Description</div>
+            <div class="controls">
+                <button>❤</button>
+                <button>💬</button>
+                <button>🔗</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="reel">
+        <video src="video2.mp4" autoplay></video>
+        <div class="overlay">Another User - Another Description</div>
+        <div class="controls">
+            <button>❤</button>
+            <button>💬</button>
+            <button>🔗</button>
+        </div>
+    </div>
+
+    <div class="reel">
+        <video src="video3.mp4" autoplay loop muted></video>
+        <div class="overlay">Third User - Awesome Reel</div>
+        <div class="controls">
+            <button>❤</button>
+            <button>💬</button>
+            <button>🔗</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const videos = document.querySelectorAll(".reel-video");
+
+            let currentPlaying = null; // Keep track of the currently playing video
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (currentPlaying && currentPlaying !== entry.target) {
+                            currentPlaying.pause(); // Pause previous video
+                        }
+                        entry.target.play(); // Play the current visible video
+                        currentPlaying = entry.target; // Update the currently playing video
+                    } else {
+                        entry.target.pause(); // Pause video if it's out of view
+                    }
+                });
+            }, { threshold: 0.7 }); // Play video when at least 70% is visible
+
+            videos.forEach(video => observer.observe(video));
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿body {
+    margin: 0;
+    background: black;
+}
+
+.reels-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+.reel {
+    position: relative;
+    width: 100vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: start;
+    background: black;
+}
+
+    .reel video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        justify-content: center;
+    }
+.overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    color: lightblue;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    z-index: 2;
+}
+
+/* Floating UI like TikTok (Icons on right side) */
+.controls {
+    position: absolute;
+    bottom: 100px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+    .controls button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 25px;
+        cursor: pointer;
+    }
+
+.reel-info {
+    font-size: 14px;
+}
+
+    .reel-info p {
+        margin: 5px 0;
+    }
